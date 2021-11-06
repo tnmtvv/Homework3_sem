@@ -1,0 +1,19 @@
+image: Visual Studio 2019
+
+init:
+  - git config --global core.autocrlf false
+
+before_build:
+  - For /R %%I in (*.sln) do nuget restore %%I
+
+build_script:
+  - For /R %%I in (*.sln) do dotnet build %%I
+
+test_script:
+  - For /R %%I in (*.sln) do dotnet test %%I
+© 2021 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
