@@ -1,0 +1,27 @@
+name: Ubuntu CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Switch autocrlf
+        run: git config --global core.autocrlf input
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.x'
+
+      - name: Nuget restore
+        run: for f in $(find . -name "*.sln"); do nuget restore $f; done
+
+      - name: Build with dotnet
+        run: for f in $(find . -name "*.sln"); do dotnet build $f; done
+
+      - name: Run unit tests
+        run: for f in $(find . -name "*.sln"); do dotnet test $f; done
