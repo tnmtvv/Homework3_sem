@@ -11,9 +11,3 @@ build_script:
 
 test_script:
   - For /R %%I in (*.sln) do dotnet test %%I
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
