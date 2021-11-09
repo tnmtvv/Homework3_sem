@@ -8,11 +8,12 @@ using System.Net.Sockets;
 using System.IO;
 using System.Threading;
 
-namespace Chatik_2
-{
 
-        class Server
-        {
+namespace NetworkChat
+{
+    class Server
+    {
+        
             static TcpListener listener;
             static TcpClient client;
             private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
@@ -76,6 +77,11 @@ namespace Chatik_2
 
 
 
-        }
-    
+    }
+
+
+
+
+
 }
+

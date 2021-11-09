@@ -7,7 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.IO;
 
-namespace Chatik_2
+namespace NetworkChat
 {
     class Program
     {
@@ -41,7 +41,6 @@ namespace Chatik_2
                 Client client = new Client(port, IP, name);
                 await client.Start();
             }
-
 
 
         }
