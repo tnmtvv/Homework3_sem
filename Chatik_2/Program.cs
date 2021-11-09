@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net;
+using System.Net.Sockets;
+using System.IO;
 
-
-namespace Chatik
+namespace Chatik_2
 {
     class Program
     {
         private static async Task Main(string[] args)
         {
-           
+
 
             if (args.Length > 2)
             {
@@ -37,10 +38,10 @@ namespace Chatik
 
                 string name = Console.ReadLine();
 
-                MyClient client = new MyClient(port, IP, name);
+                Client client = new Client(port, IP, name);
                 await client.Start();
             }
-            
+
 
 
         }

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{22580633-B624-4420-9B7A-E94F98637205}</ProjectGuid>
+    <ProjectGuid>{D9287E5B-5671-4C52-88A2-6C5494A5AAA6}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Chatik</RootNamespace>
-    <AssemblyName>Chatik</AssemblyName>
+    <RootNamespace>Chatik_2</RootNamespace>
+    <AssemblyName>Chatik_2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyClient.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
