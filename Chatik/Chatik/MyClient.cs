@@ -19,7 +19,7 @@ namespace Chatik
         private readonly IPAddress Ip;
         private TcpClient My_client;
 
-        MyClient(int port, IPAddress ip, string name)
+        public MyClient(int port, IPAddress ip, string name)
         {
             Port = port;
             Ip = ip;
@@ -60,6 +60,7 @@ namespace Chatik
 
             StreamWriter sw = new StreamWriter(client.GetStream()) { AutoFlush = true };
 
+            Console.WriteLine(this.Name + ": ");
             string new_Message_from_Client = Console.ReadLine();
             await sw.WriteLineAsync(new_Message_from_Client);
 
