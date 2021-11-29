@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Matricies": {
+      "commandName": "Project",
+      "commandLineArgs": "A.txt B.txt"
+    }
+  }
+}
