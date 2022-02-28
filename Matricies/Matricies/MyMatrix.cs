@@ -6,83 +6,83 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 
-namespace Matricies
+
+namespace Matrices
 {
     public class MyMatrix
     {
         /// <summary>
-        /// class matrix for creating objects and operation on them
+        /// class _Matrix for creating objects and operation on them
         /// </summary>
-        static Random rand = new Random();
-        private int Rows, Cols;
-        private int[,] Matrix;
+        static private Random rand = new Random();
+        private int _Rows, _Cols;
+        private int[,] _Matrix;
 
         /// <summary>
-        /// constuctor for creating a matrix by given parametrs 
+        /// constuctor for creating a _Matrix by given parametrs 
         /// </summary>
-       
-        public MyMatrix(int rows, int cols)
+        public MyMatrix(int _rows, int _cols)
         {
-            Rows = rows;
-            Cols = cols;
-            int[,] matrix = new int[rows, cols];
+            _Rows = _rows;
+            _Cols = _cols;
+            int[,] _Matrix = new int[_Rows, _Cols];
 
-            for (int i = 0; i < Rows; i++)
+            for (int i = 0; i < _Rows; i++)
             {
-                for (int j = 0; j < Cols; j++)
+                for (int j = 0; j < _Cols; j++)
                 {
-                    matrix[i, j] = 0;
+                    _Matrix[i, j] = 0;
                 }
             }
-            this.Matrix = matrix;
+            this._Matrix = _Matrix;
         }
+
         /// <summary>
-        /// Create matrix from an array
+        /// Create _Matrix from an array
         /// </summary>
-
-        public MyMatrix(int[,] matrix)
+        public MyMatrix(int[,] _Matrix)
         {
-            this.Matrix = matrix;
-            Rows = matrix.GetLength(0);
-            Cols = matrix.GetLength(1);
+            _Matrix = _Matrix;
+            _Rows = _Matrix.GetLength(0);
+            _Cols = _Matrix.GetLength(1);
         }
 
-
-
-
-        public int[,] _Matrix
+        public int[,] Matrix
         {
-            get => Matrix;
-            set => Matrix = value;
+            get => _Matrix;
+            set => _Matrix = value;
         }
 
-        public int _Rows
+        public int Rows
         {
-            get => Rows;
-            set => Rows = value;
+            get => _Rows;
+            set => _Rows = value;
         }
 
-        public int _Cols
+        public int Cols
         {
-            get => Cols;
-            set => Cols = value;
+            get => _Cols;
+            set => _Cols = value;
         }
+
         /// <summary>
         /// reloaded operators 
         /// </summary>
         public static bool operator ==(MyMatrix A, MyMatrix B)
         {
-            if (A.Rows != B.Rows || A.Cols != B.Cols)
+            if (A._Rows != B._Rows || A._Cols != B._Cols)
+            {
                 return false;
+            }
             else
             {
-                for (int i = 0; i < A.Rows; i++)
+                for (int i = 0; i < A._Rows; i++)
                 {
-                    for (int j = 0; j < A.Cols; j++)
+                    for (int j = 0; j < A._Cols; j++)
                     {
-                        if (A.Matrix[i, j] != B.Matrix[i, j])
+                        if (A._Matrix[i, j] != B._Matrix[i, j])
                         {
-                            Console.WriteLine(A.Matrix[i, j] + "!= " + B.Matrix[i, j]);
+                            Console.WriteLine(A._Matrix[i, j] + "!= " + B._Matrix[i, j]);
                             return false;
                         }
                     }
@@ -90,51 +90,57 @@ namespace Matricies
                 return true;
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <returns></returns>
         public static bool operator !=(MyMatrix A, MyMatrix B)
         {
-            if (A.Rows != B.Rows || A.Cols != B.Cols)
+            if (A._Rows != B._Rows || A._Cols != B._Cols)
+            {
                 return true;
+            }
             else
             {
-                for (int i = 0; i < A.Rows; i++)
+                for (int i = 0; i < A._Rows; i++)
                 {
-                    for (int j = 0; j < A.Cols; j++)
+                    for (int j = 0; j < A._Cols; j++)
                     {
-                        if (A.Matrix[i, j] != B.Matrix[i, j]) return true;
+                        if (A._Matrix[i, j] != B._Matrix[i, j]) return true;
                     }
                 }
                 return false;
             }
         }
 
-
         /// <summary>
-        /// generates a random matrix 
+        /// generates a random _Matrix 
         /// </summary>
- 
-        public static MyMatrix generator(int rows, int cols, double sparcity = 1)
+        public static MyMatrix generator(int _Rows, int _Cols, double sparcity = 1)
         {
-            int[,] matrix = new int[rows, cols];
+            int[,] _Matrix = new int[_Rows, _Cols];
             double indicator;
-            for (int i = 0; i < rows; i++)
+            for (int i = 0; i < _Rows; i++)
             {
-                for (int j = 0; j < cols; j++)
+                for (int j = 0; j < _Cols; j++)
                 {
                     indicator = rand.NextDouble();
                     if (indicator > sparcity)
-                        matrix[i, j] = 0;
-                    else matrix[i, j] = rand.Next();
+                        _Matrix[i, j] = 0;
+                    else _Matrix[i, j] = rand.Next();
                 }
             }
-            MyMatrix next_Matrix = new MyMatrix(rows, cols);
-            next_Matrix.Matrix = matrix;
+            MyMatrix next_Matrix = new MyMatrix(_Rows, _Cols);
+            next_Matrix._Matrix = _Matrix;
             return next_Matrix;
         }
 
         /// <summary>
         /// makes a string out of an array
         /// </summary>
-     
         static string array_to_string(int[] array)
         {
             StringBuilder sb = new StringBuilder("");
@@ -148,22 +154,20 @@ namespace Matricies
         }
 
         /// <summary>
-        /// writes matrix to file
+        /// writes _Matrix to file
         /// </summary>
-        
         static public void write_to_file(MyMatrix myMatrix, string path)
         {
             StreamWriter sw = new StreamWriter(path);
-            string new_row;
-            int[] new_arr = new int[myMatrix.Cols];
+            int[] new_arr = new int[myMatrix._Cols];
 
-            for (int i = 0; i < myMatrix.Rows; i++)
+            for (int i = 0; i < myMatrix._Rows; i++)
             {
-                for (int j = 0; j < myMatrix.Cols; j++)
+                for (int j = 0; j < myMatrix._Cols; j++)
                 {
-                    new_arr[j] = myMatrix.Matrix[i, j];
+                    new_arr[j] = myMatrix._Matrix[i, j];
                 }
-                new_row = array_to_string(new_arr);
+                string new_row = array_to_string(new_arr);
                 sw.WriteLine(new_row);
             }
             sw.Close();
@@ -172,11 +176,8 @@ namespace Matricies
         /// <summary>
         /// mkaes an array out of a string
         /// </summary>
-        
-
         static int[] string_to_Array(string row)
         {
-
             string[] nums = row.Split(' ');
             int[] array = new int[nums.Length];
             for (int i = 0; i < array.Length; i++)
@@ -185,57 +186,53 @@ namespace Matricies
             }
             return array;
         }
+
         /// <summary>
-        /// multiplies matrices consistently
+        /// multiplies matrices sequentially
         /// </summary>
-       
         public static MyMatrix mult_consistently(MyMatrix A, MyMatrix B)
         {
-            if (A.Cols != B.Rows)
+            if (A._Cols != B._Rows)
                 throw new ArgumentException("Wrong sizes");
 
+            int a__Rows = A._Rows;
+            int a__Cols = A._Cols;
+            int b__Rows = B._Rows;
+            int b__Cols = B._Cols;
 
-            int a_rows = A.Rows;
-            int a_cols = A.Cols;
-            int b_rows = B.Rows;
-            int b_cols = B.Cols;
+            int[,] new__Matrix = new int[a__Rows, b__Cols];
 
-            int[,] new_matrix = new int[a_rows, b_cols];
-
-
-            for (int i = 0; i < a_rows; i++)
+            for (int i = 0; i < a__Rows; i++)
             {
-                //int[] new_row = new int[b_cols];
-                for (int j = 0; j < b_cols; j++)
+                for (int j = 0; j < b__Cols; j++)
                 {
-                    for (int k = 0; k < a_cols; k++)
+                    for (int k = 0; k < a__Cols; k++)
                     {
-                        new_matrix[i, j] += A.Matrix[i, k] * B.Matrix[k, j];
+                        new__Matrix[i, j] += A._Matrix[i, k] * B._Matrix[k, j];
                     }
                 }
             }
-            MyMatrix matrix = new MyMatrix(a_rows, b_cols);
-            matrix.Matrix = new_matrix;
+            MyMatrix _Matrix = new MyMatrix(a__Rows, b__Cols);
+            _Matrix._Matrix = new__Matrix;
 
-            return matrix;
+            return _Matrix;
         }
 
         /// <summary>
         /// multiplies marices parallel
         /// </summary>
-        
         public static MyMatrix mult_async_3(MyMatrix A, MyMatrix B)
         {
-            if (A.Cols != B.Rows)
+            if (A._Cols != B._Rows)
                 throw new ArgumentException("Wrong sizes");
 
-            MyMatrix res = new MyMatrix(A.Rows, B.Cols);
-            int[,] new_matrix = new int[A.Rows, B.Cols];
+            MyMatrix res = new MyMatrix(A._Rows, B._Cols);
+            int[,] new__Matrix = new int[A._Rows, B._Cols];
 
-            int ammount_of_threads = Math.Min(Environment.ProcessorCount, A.Rows);
+            int ammount_of_threads = Math.Min(Environment.ProcessorCount, A._Rows);
 
-            int chunk_size = A.Rows / ammount_of_threads;
-            if (A.Rows % ammount_of_threads != 0)
+            int chunk_size = A._Rows / ammount_of_threads;
+            if (A._Rows % ammount_of_threads != 0)
             {
                 chunk_size++;
             }
@@ -246,22 +243,20 @@ namespace Matricies
             {
                 int cur_i = i * chunk_size;
 
-
                 threads[i] = new Thread(() =>
                 {
-                    for (int j = cur_i; j < Math.Min(cur_i + chunk_size, A.Rows); j++)
+                    for (int j = cur_i; j < Math.Min(cur_i + chunk_size, A._Rows); j++)
                     {
-                        for (int k = 0; k < B.Cols; k++)
+                        for (int k = 0; k < B._Cols; k++)
                         {
-                            for (int l = 0; l < A.Cols; l++)
+                            for (int l = 0; l < A._Cols; l++)
                             {
-                                new_matrix[j, k] += A.Matrix[j, l] * B.Matrix[l, k];
+                                new__Matrix[j, k] += A._Matrix[j, l] * B._Matrix[l, k];
                             }
                         }
                     }
                 });
             }
-
 
             foreach (var th in threads)
             {
@@ -273,15 +268,13 @@ namespace Matricies
                 th.Join();
             }
 
-            res.Matrix = new_matrix;
+            res._Matrix = new__Matrix;
             return res;
-
         }
 
         /// <summary>
-        /// reads a matrix from a file
+        /// reads a _Matrix from a file
         /// </summary>
-       
         public static MyMatrix read_from_file(string path)
         {
             List<string> list_strings = new List<string>();
@@ -291,19 +284,16 @@ namespace Matricies
 
             StreamReader sr = new StreamReader(path);
 
-            string new_one = "";
-
             while (!sr.EndOfStream)
             {
-                new_one = sr.ReadLine();
+                string new_one = sr.ReadLine();
                 if (new_one[new_one.Length - 1] == ' ')
                     new_one = new_one.Substring(0, new_one.Length - 1);
                 list_strings.Add(new_one);
             }
 
-
             int expected_size = string_to_Array(list_strings.First()).Length;
-            int[,] matrix = new int[list_strings.Count, expected_size];
+            int[,] _Matrix = new int[list_strings.Count, expected_size];
             int[] new_arr = new int[expected_size];
 
             for (int i = 0; i < list_strings.Count; i++)
@@ -312,22 +302,18 @@ namespace Matricies
 
                 for (int j = 0; j < expected_size; j++)
                 {
-                    matrix[i, j] = new_arr[j];
+                    _Matrix[i, j] = new_arr[j];
                 }
             }
 
-            MyMatrix mymtrx = new MyMatrix(matrix.GetLength(0), matrix.GetLength(1));
-            mymtrx.Matrix = matrix;
+            MyMatrix mymtrx = new MyMatrix(_Matrix.GetLength(0), _Matrix.GetLength(1));
+            mymtrx._Matrix = _Matrix;
 
             sr.Close();
 
             return mymtrx;
         }
-
-
     }
-
-
-
 }
+
 
